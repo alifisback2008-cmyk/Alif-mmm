@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alif ❤️ Mim</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  min-height:100vh;
+  background:radial-gradient(circle at top,#65002e,#210016,#08000e);
+  color:white;
+  font-family:Georgia,serif;
+  text-align:center;
+  padding:30px 15px;
+  overflow-x:hidden;
+}
+
+.container{
+  max-width:430px;
+  margin:auto;
+  position:relative;
+  z-index:2;
+}
+
+.heart{
+  font-size:75px;
+  animation:beat 1s infinite;
+  margin-top:20px;
+}
+
+@keyframes beat{
+  50%{transform:scale(1.2)}
+}
+
+h1{
+  color:#ff78ae;
+  text-shadow:0 0 20px #ff0066;
+  font-size:36px;
+  margin:15px;
+}
+
+.subtitle{
+  color:#ffc4dc;
+  letter-spacing:3px;
+  margin-bottom:30px;
+  font-size:13px;
+}
+
+h3{
+  color:#ff9bc1;
+  margin-bottom:18px;
+}
+
+.buttons{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:13px;
+}
+
+button{
+  background:linear-gradient(135deg,#ff176c,#a90050);
+  color:white;
+  border:1px solid #ff8ab8;
+  border-radius:15px;
+  padding:17px 8px;
+  font-size:14px;
+  cursor:pointer;
+  box-shadow:0 0 12px #ff176c55;
+  transition:.3s;
+}
+
+button:active{
+  transform:scale(.92);
+}
+
+.result{
+  display:none;
+  margin-top:25px;
+  padding:25px 18px;
+  background:#ffffff12;
+  border:1px solid #ff78ae;
+  border-radius:20px;
+  box-shadow:0 0 25px #ff176c55;
+  animation:show .6s ease;
+}
+
+@keyframes show{
+  from{opacity:0;transform:translateY(25px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.result h2{
+  color:#ff83b5;
+  margin-bottom:15px;
+}
+
+.result p{
+  line-height:1.9;
+  font-size:16px;
+  color:#ffe1ed;
+}
+
+.close{
+  margin-top:20px;
+  padding:10px 25px;
+}
+
+.floating{
+  position:fixed;
+  bottom:-30px;
+  animation:up 7s linear forwards;
+  pointer-events:none;
+  z-index:1;
+}
+
+@keyframes up{
+  to{transform:translateY(-110vh) rotate(360deg);opacity:0}
+}
+
+.footer{
+  margin-top:35px;
+  color:#ff9bc1;
+  font-size:13px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="heart">❤️</div>
+
+  <h1>ALIF ❤️ MIM</h1>
+
+  <div class="subtitle">
+    A BEAUTIFUL LOVE STORY ✨
+  </div>
+
+  <h3>Choose Your Surprise 💌</h3>
+
+  <div class="buttons">
+
+    <button onclick="showMessage(0)">
+      💌 Open My Letter
+    </button>
+
+    <button onclick="showMessage(1)">
+      ❤️ How Much I Love You
+    </button>
+
+    <button onclick="showMessage(2)">
+      🥺 Miss Me?
+    </button>
+
+    <button onclick="showMessage(3)">
+      🌹 A Special Gift
+    </button>
+
+    <button onclick="showMessage(4)">
+      💗 Why You Are Special
+    </button>
+
+    <button onclick="showMessage(5)">
+      😘 One Last Surprise
+    </button>
+
+    <button onclick="showMessage(6)">
+      🫣 Guess What?
+    </button>
+
+    <button onclick="showMessage(7)">
+      💞 Our Little World
+    </button>
+
+    <button onclick="showMessage(8)">
+      🌙 Night Message
+    </button>
+
+    <button onclick="showMessage(9)">
+      🎁 Secret Box
+    </button>
+
+  </div>
+
+  <div class="result" id="result">
+    <h2 id="heading"></h2>
+    <p id="message"></p>
+    <button class="close" onclick="closeMessage()">
+      Close ❤️
+    </button>
+  </div>
+
+  <div class="footer">
+    Made With Love By Alif ❤️<br><br>
+    Just For You, Mim 🌸
+  </div>
+
+</div>
+
+<script>
+
+const surprises=[
+
+{
+title:"💌 My Little Letter",
+text:"Dear Mim ❤️<br><br>I Love You Pakhi 🥺❤️<br>তুমি আমার কাছে অনেক স্পেশাল। তোমার হাসি আর সুন্দর মুহূর্তগুলো আমার কাছে অনেক মূল্যবান।"
+},
+
+{
+title:"❤️ My Love",
+text:"কতটা ভালোবাসি সেটা হয়তো কথায় বোঝাতে পারব না। তবে তোমার প্রতি আমার অনুভূতিটা অনেক সুন্দর এবং সত্যি। ❤️"
+},
+
+{
+title:"🥺 Miss Me?",
+text:"একটু কি আমার কথা মনে পড়ে? 😒<br><br>কারণ মাঝে মাঝে তোমার কথা ভেবে আমার মুখেও হাসি চলে আসে! 💗"
+},
+
+{
+title:"🌹 A Rose For You",
+text:"তোমার জন্য একগুচ্ছ গোলাপ! 🌹🌹🌹<br><br>প্রতিটা গোলাপের সাথে রইল একটুকরো ভালোবাসা।"
+},
+
+{
+title:"💗 You Are Special",
+text:"তোমার ছোট ছোট কথা, হাসি আর অভিমান—সবকিছুই আমার কাছে আলাদা। তুমি যেমন, তেমনই সুন্দর। ❤️"
+},
+
+{
+title:"😘 One Last Surprise",
+text:"I LOVE YOU PAKHI! 🥺❤️<br><br>ALIF ❤️ MIM<br><br>একটা ছোট্ট ওয়েবসাইট, কিন্তু এর পেছনে অনেক ভালোবাসা!"
+},
+
+{
+title:"🫣 Guess What?",
+text:"একটা কথা বলি?<br><br>তোমার জন্য এই পুরো ওয়েবসাইটটা বানিয়েছে কে জানো?<br><br>তোমার Alif! 😁❤️"
+},
+
+{
+title:"💞 Our Little World",
+text:"হাজারো ব্যস্ততার মাঝেও সুন্দর কিছু মুহূর্ত তৈরি হোক। হাসি, গল্প আর ভালো স্মৃতিতে ভরে উঠুক আমাদের দিনগুলো। 💕"
+},
+
+{
+title:"🌙 Good Night",
+text:"রাতের আকাশে হাজারো তারা, আর তোমার জন্য রইল একরাশ শুভকামনা। ভালো থেকো পাখি। 🌙❤️"
+},
+
+{
+title:"🎁 Secret Box",
+text:"🎁 Surprise!<br><br>তোমার জন্য আমার ছোট্ট উপহার:<br><br>একটা মিষ্টি হাসি আর অনেক অনেক ভালোবাসা! ❤️🥺"
+}
+
+];
+
+function showMessage(index){
+
+const box=document.getElementById("result");
+
+document.getElementById("heading").innerHTML=
+surprises[index].title;
+
+document.getElementById("message").innerHTML=
+surprises[index].text;
+
+box.style.display="block";
+
+box.scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+
+}
+
+function closeMessage(){
+document.getElementById("result").style.display="none";
+}
+
+function createHeart(){
+
+const h=document.createElement("div");
+
+h.className="floating";
+h.innerHTML=["❤️","💕","💗","🌹","✨"][Math.floor(Math.random()*5)];
+
+h.style.left=Math.random()*100+"vw";
+h.style.fontSize=(15+Math.random()*25)+"px";
+h.style.animationDuration=(4+Math.random()*5)+"s";
+
+document.body.appendChild(h);
+
+setTimeout(()=>h.remove(),9000);
+
+}
+
+setInterval(createHeart,400);
+
+</script>
+
+</body>
+</html>
